@@ -1,0 +1,2 @@
+With Mark_movie as (select crew.title_id from people, crew where people.person_id = crew.person_id and people.name = 'Mark Hamill' and people.born = 1951)
+Select titles.primary_title from people, titles, crew where people.person_id = crew.person_id and people.name = 'George Lucas' and people.born = 1944 and crew.title_id in Mark_movie and crew.title_id = titles.title_id and titles.type = 'movie';

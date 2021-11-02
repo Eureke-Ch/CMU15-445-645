@@ -1,0 +1,2 @@
+With p(title_id) as (select title_id from crew natural join people where people.name = 'Mark Hamill' and people.born = '1951')
+Select count(distinct person_id) from crew,p where p.title_id = crew.title_id and crew.category like 'act%' limit 20;
