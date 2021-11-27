@@ -14,8 +14,8 @@
 
 #include <memory>
 #include <stdexcept>
-#include <vector>
 #include <utility>
+#include <vector>
 
 #include "common/exception.h"
 
@@ -159,9 +159,8 @@ class RowMatrix : public Matrix<T> {
   T GetElement(int i, int j) const override {
     if (i < 0 || i >= this->rows_ || j < 0 || j >= this->cols_) {
       throw Exception(ExceptionType::OUT_OF_RANGE, "out_of_range");
-    } else {
-      return data_[i][j];
     }
+    return data_[i][j];
   }
 
   /**
@@ -177,9 +176,8 @@ class RowMatrix : public Matrix<T> {
   void SetElement(int i, int j, T val) override {
     if (i < 0 || i >= this->rows_ || j < 0 || j >= this->cols_) {
       throw Exception(ExceptionType::OUT_OF_RANGE, "out_of_range");
-    } else {
-      data_[i][j] = val;
     }
+    data_[i][j] = val;
   }
 
   /**
@@ -197,10 +195,9 @@ class RowMatrix : public Matrix<T> {
     int n = source.size();
     if (n != this->rows_ * this->cols_) {
       throw Exception(ExceptionType::OUT_OF_RANGE, "out_of_range");
-    } else {
-      for (int i = 0; i < n; ++i) {
-        data_[i / this->cols_][i % this->cols_] = source[i];
-      }
+    }
+    for (int i = 0; i < n; ++i) {
+      data_[i / this->cols_][i % this->cols_] = source[i];
     }
   }
 

@@ -1,2 +1,0 @@
-With C(weighted_average) as ( select sum(votes*rating)/sum(votes) from ratings, titles where titles.title_id = ratings.title_id and titles.type = 'movie' ), m(min_votes) as (select 25000.0)
-Select primary_title, (votes/(votes+min_votes))*rating + (min_votes/(votes+min_votes))*weighted_average as WR from ratings, titles, C, m where ratings.title_id = titles.title_id and titles.type = 'movie' order by WR desc limit 250;
